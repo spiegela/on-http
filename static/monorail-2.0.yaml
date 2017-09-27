@@ -1,5 +1,5 @@
 info:
-  title: rackhd api 
+  title: rackhd api
   version: "5.0.0"
 basePath: /api/2.0
 consumes:
@@ -232,7 +232,7 @@ definitions:
       node:
         type: string
       config:
-        type: object  
+        type: object
       service:
         type: string
   PartialPoller:
@@ -1056,7 +1056,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: "#/definitions/hooks.2.0_HookBase"
+              $ref: "#/definitions/HookBase"
         default:
           description: Unexpected error
           schema:
@@ -1081,7 +1081,7 @@ paths:
         name: body
         required: true
         schema:
-            $ref: '#/definitions/hooks.2.0_HookPost'
+            $ref: '#/definitions/HookPost'
       responses:
         201:
           description: Successfully created new hook
@@ -1180,7 +1180,7 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/hooks.2.0_HookBase'
+          $ref: '#/definitions/HookBase'
       responses:
         200:
           description: Successfully modified the hook
@@ -1221,7 +1221,7 @@ paths:
           description: Successfully retrieved the list of lookups
           schema:
             items:
-              $ref: '#/definitions/Lookups.2.0_LookupBase'
+              $ref: '#/definitions/LookupBase'
             type: array
         default:
           description: Unexpected error
@@ -1244,12 +1244,12 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/Lookups.2.0_LookupBase'
+          $ref: '#/definitions/LookupBase'
       responses:
         201:
           description: Successfully created new lookup
           schema:
-            $ref: '#/definitions/Lookups.2.0_LookupBase'
+            $ref: '#/definitions/LookupBase'
         default:
           description: Unexpected error
           schema:
@@ -1307,7 +1307,7 @@ paths:
           description: Successfully retrieved the lookup
           schema:
             items:
-              $ref: '#/definitions/Lookups.2.0_LookupBase'
+              $ref: '#/definitions/LookupBase'
             type: array
         default:
           description: Unexpected error
@@ -1335,12 +1335,12 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/Lookups.2.0_LookupBase'
+          $ref: '#/definitions/LookupBase'
       responses:
         200:
           description: Successfully modified the lookup
           schema:
-            $ref: '#/definitions/Lookups.2.0_LookupBase'
+            $ref: '#/definitions/LookupBase'
         404:
           description: The specified lookup was not found
           schema:
@@ -1385,7 +1385,7 @@ paths:
           description: Successfully retrieved the list of nodes
           schema:
             items:
-              $ref: '#/definitions/node.2.0_GetNode'
+              $ref: '#/definitions/GetNode'
             type: array
         400:
           description: Bad Request
@@ -1413,7 +1413,7 @@ paths:
         name: identifiers
         required: true
         schema:
-          $ref: '#/definitions/node.2.0_PartialNode'
+          $ref: '#/definitions/PartialNode'
       responses:
         201:
           description: Successfully created node
@@ -1500,7 +1500,7 @@ paths:
           description: Successfully retrieved the specified node
           schema:
             items:
-              $ref: '#/definitions/node.2.0_GetNode'
+              $ref: '#/definitions/GetNode'
             type: array
         404:
           description: The specified node was not found
@@ -1533,12 +1533,12 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/node.2.0_PartialNode'
+          $ref: '#/definitions/PartialNode'
       responses:
         200:
           description: Successfully modified the specified node
           schema:
-            $ref: '#/definitions/node.2.0_PartialNode'
+            $ref: '#/definitions/PartialNode'
         404:
           description: The specified node was not found
           schema:
@@ -2434,7 +2434,7 @@ paths:
         name: content
         required: true
         schema:
-          $ref: '#/definitions/poller.2.0_PartialPoller'
+          $ref: '#/definitions/PartialPoller'
       responses:
         201:
           description: Poller created successfully
@@ -2587,7 +2587,7 @@ paths:
         name: content
         required: true
         schema:
-          $ref: '#/definitions/poller.2.0_PartialPoller'
+          $ref: '#/definitions/PartialPoller'
       responses:
         200:
           description: Poller was successfully modified
@@ -3230,7 +3230,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/skus.2.0_SkusUpsert'
+              $ref: '#/definitions/SkusUpsert'
         default:
           description: Unexpected error
           schema:
@@ -3253,7 +3253,7 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/skus.2.0_SkusUpsert'
+          $ref: '#/definitions/SkusUpsert'
       responses:
         201:
           description: Successfully created the SKU
@@ -3285,7 +3285,7 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/skus.2.0_SkusUpsert'
+          $ref: '#/definitions/SkusUpsert'
       responses:
         201:
           description: Successfully created or updated SKU definition
@@ -3412,7 +3412,7 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/skus.2.0_SkusUpsert'
+          $ref: '#/definitions/SkusUpsert'
       responses:
         200:
           description: Successfully modified the specified SKU
@@ -3455,7 +3455,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/node.2.0_GetNode'
+              $ref: '#/definitions/GetNode'
         404:
           description: The SKU with the specified identifier was not found
           schema:
