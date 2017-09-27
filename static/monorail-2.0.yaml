@@ -1620,7 +1620,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the catalogs for a node by source
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2770,7 +2770,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get contents of a profile
       tags:
-      - pollers
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2808,7 +2808,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a profile
       tags:
-      - pollers
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
