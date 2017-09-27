@@ -24,7 +24,7 @@ definitions:
         type: array
     required:
     - message
-  Lookups.2.0_LookupBase:
+  LookupBase:
     description: A lookup record
     properties:
       ipAddress:
@@ -69,7 +69,7 @@ definitions:
         type: string
       password:
         type: string
-  hooks.2.0_HookBase:
+  HookBase:
     description: Hook base schema
     type: object
     properties:
@@ -82,8 +82,8 @@ definitions:
         type: array
         items:
           type: object
-  hooks.2.0_HookPost:
-    description: Hook post schema 
+  HookPost:
+    description: Hook post schema
     type: object
     properties:
       url:
@@ -121,7 +121,7 @@ definitions:
     - service
     - config
     type: object
-  node.2.0_GetNode:
+  GetNode:
     description: Get a node from RackHD
     properties:
       identifier:
@@ -162,7 +162,7 @@ definitions:
         - rack
         type: string
     type: object
-  node.2.0_PartialNode:
+  PartialNode:
     description: Post a node into RackHD
     properties:
       autoDiscover:
@@ -235,7 +235,7 @@ definitions:
         type: object  
       service:
         type: string
-  poller.2.0_PartialPoller:
+  PartialPoller:
     description: A poller for periodic collection of telemetry data
     properties:
       config:
@@ -322,7 +322,7 @@ definitions:
         type: array
       role:
         type: string
-  skus.2.0_SkusUpsert:
+  SkusUpsert:
     description: A sku for RackHD
     properties:
       discoveryGraphName:
