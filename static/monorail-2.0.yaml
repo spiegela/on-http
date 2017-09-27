@@ -469,7 +469,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get all catalogs
       tags:
-      - /api/2.0
+      - catalogs
       x-authentication-type:
       - jwt
       x-privileges:
@@ -498,7 +498,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get a catalog
       tags:
-      - /api/2.0
+      - catalogs
       x-authentication-type:
       - jwt
       x-privileges:
@@ -521,14 +521,14 @@ paths:
           description: Successfully retrieved the catalog
           schema:
             type: object
-                       
+
         default:
           description: Error
           schema:
             $ref: '#/definitions/ErrorResponse'
       summary: Get a firmware catalog
       tags:
-      - /api/2.0
+      - catalogs
       x-authentication-type:
       - jwt
       x-privileges:
@@ -550,7 +550,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get server configuration
       tags:
-      - /api/2.0
+      - config
       x-authentication-type:
       - jwt
       x-privileges:
@@ -579,7 +579,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch server configuration
       tags:
-      - /api/2.0
+      -  config
       x-authentication-type:
       - jwt
       x-privileges:
@@ -608,7 +608,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch server configuration
       tags:
-      - /api/2.0
+      - config
       x-authentication-type:
       - jwt
       x-privileges:
@@ -634,7 +634,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all files
       tags:
-      - /api/2.0
+      - files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -668,7 +668,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a file
       tags:
-      - /api/2.0
+      - files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -702,7 +702,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a file
       tags:
-      - /api/2.0
+      -  files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -735,7 +735,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a file
       tags:
-      - /api/2.0
+      - files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -772,7 +772,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get md5sum of file
       tags:
-      - /api/2.0
+      - files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -809,7 +809,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get file metadata
       tags:
-      - /api/2.0
+      - files
       x-authentication-type:
       - jwt
       x-privileges:
@@ -827,7 +827,8 @@ paths:
         List all static files
       description: |
         List all static files
-      tags: [ "/api/2.0" ]
+      tags:
+      - files
       responses:
         200:
           description: array of all
@@ -839,7 +840,6 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-
   /ibms:
     get:
       description: Get a list of all In Band Management settings that have been associated
@@ -856,7 +856,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of all IBM service instances
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -889,7 +889,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put an IBM service
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -915,7 +915,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of IBMS services
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -943,7 +943,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get an IBMS service definition
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -975,7 +975,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete IBMS settings
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1001,7 +1001,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get an IBMS service
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1038,7 +1038,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch IBMS settings
       tags:
-      - /api/2.0
+      - ibms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1063,7 +1063,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all hooks
       tags:
-      - /api/2.0
+      - hooks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1097,7 +1097,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a hook
       tags:
-      - /api/2.0
+      - hooks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1127,7 +1127,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a hook
       tags:
-      - /api/2.0
+      - hooks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1160,7 +1160,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a hook
       tags:
-      - /api/2.0
+      - hooks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1196,7 +1196,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a hook
       tags:
-        - /api/2.0
+        - hooks
       x-authentication-type:
         - jwt
       x-privileges:
@@ -1229,7 +1229,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of lookups
       tags:
-      - /api/2.0
+      - lookups
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1256,7 +1256,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a lookup
       tags:
-      - /api/2.0
+      - lookups
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1287,7 +1287,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a lookup
       tags:
-      - /api/2.0
+      - lookups
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1315,7 +1315,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a lookup
       tags:
-      - /api/2.0
+      - lookups
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1351,7 +1351,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a lookup
       tags:
-      - /api/2.0
+      - lookups
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1397,7 +1397,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of nodes
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1425,7 +1425,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1450,7 +1450,7 @@ paths:
           description: The tag name identifier was not found
       summary: Delete nodes tag
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1480,7 +1480,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1512,7 +1512,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1549,7 +1549,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1581,7 +1581,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the catalogs for a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1650,7 +1650,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all OBM services
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1687,7 +1687,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put an OBM service
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1723,7 +1723,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the pollers for a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1761,7 +1761,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Remove relations from a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1794,7 +1794,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a nodes relations
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1834,7 +1834,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Add relationships between nodes
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1867,7 +1867,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the ssh settings for a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1901,7 +1901,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post ssh settings
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1936,7 +1936,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get node tags
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -1972,7 +1972,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch node tags
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2008,7 +2008,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a tag from a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2047,7 +2047,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all workflows for a node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2062,7 +2062,7 @@ paths:
         name: identifier
         required: true
         type: string
-      - description: 
+      - description:
           The name property set to the injectableName property of the workflow graph
         in: body
         name: body
@@ -2089,7 +2089,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post workflow for the node
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2129,7 +2129,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Perform an action on a workflow
       tags:
-      - /api/2.0
+      - nodes
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2156,7 +2156,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of all OBM service instances
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2189,7 +2189,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put an OBM service
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2214,7 +2214,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of OBM services
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2242,7 +2242,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get an OBM service definition
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2277,7 +2277,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Set identify light status
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2309,7 +2309,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete OBM settings
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2335,7 +2335,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get an OBM service
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2372,7 +2372,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch OBM settings
       tags:
-      - /api/2.0
+      - obms
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2414,7 +2414,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of all active pollers
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2446,7 +2446,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2470,7 +2470,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of possible pollers
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2504,7 +2504,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2534,7 +2534,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2566,7 +2566,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2603,7 +2603,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2643,7 +2643,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get output data for a poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2680,7 +2680,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get latest data for a poller
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2716,7 +2716,7 @@ paths:
         name: mac
         required: false
         type: string
-      - description: 
+      - description:
           When macs parameters is not passed, passed with MAC adds IP address to lookup
         in: query
         name: ip
@@ -2733,7 +2733,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of profiles
       tags:
-      - /api/2.0
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2770,7 +2770,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get contents of a profile
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2808,7 +2808,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a profile
       tags:
-      - /api/2.0
+      - pollers
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2830,7 +2830,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of profile metadata
       tags:
-      - /api/2.0
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2868,7 +2868,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified profiles metadata from database
       tags:
-      - /api/2.0
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2903,7 +2903,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a switch error
       tags:
-      - /api/2.0
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2935,7 +2935,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a profile
       tags:
-      - /api/2.0
+      - profiles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2963,7 +2963,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the list of roles
       tags:
-      - /api/2.0
+      - roles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -2998,7 +2998,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a new role
       tags:
-      - /api/2.0
+      - roles
       x-authentication-type:
       - jwt
       - anonymous
@@ -3032,7 +3032,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a role
       tags:
-      - /api/2.0
+      - roles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3064,7 +3064,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a role
       tags:
-      - /api/2.0
+      - roles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3104,7 +3104,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a role
       tags:
-      - /api/2.0
+      - roles
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3126,7 +3126,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get all schemas
       tags:
-      - /api/2.0
+      - schemas
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3148,7 +3148,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get all task schemas names
       tags:
-      - /api/2.0
+      - schemas
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3176,7 +3176,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get a task schema
       tags:
-      - /api/2.0
+      - schemas
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3204,7 +3204,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get a schema
       tags:
-      - /api/2.0
+      - schemas
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3237,7 +3237,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of SKUs
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3269,7 +3269,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3301,7 +3301,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3329,7 +3329,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a SKU Pack
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3361,7 +3361,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3391,7 +3391,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3432,7 +3432,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch a SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3466,7 +3466,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get nodes for specific SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3501,7 +3501,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete a SKU Pack
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3533,7 +3533,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a SKU Pack to the specified SKU
       tags:
-      - /api/2.0
+      - skus
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3570,7 +3570,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all tags
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3602,7 +3602,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a tag
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3635,7 +3635,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified tag
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3665,7 +3665,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a tag
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3700,7 +3700,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get nodes with the specified tag
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3743,7 +3743,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post workflow to node by tag
       tags:
-      - /api/2.0
+      - tags
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3771,7 +3771,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       summary: Get tasks bootstrap.js
       tags:
-      - /api/2.0
+      - tasks
     x-swagger-router-controller: tasks
   /tasks/{identifier}:
     get:
@@ -3798,7 +3798,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified task
       tags:
-      - /api/2.0
+      - tasks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3834,7 +3834,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a task
       tags:
-      - /api/2.0
+      - tasks
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3870,7 +3870,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3906,7 +3906,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3945,7 +3945,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Create or update the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -3977,7 +3977,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of metadata for all templates
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4016,7 +4016,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the metadata for the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4062,7 +4062,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4106,7 +4106,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get headers of the specified template
       tags:
-      - /api/2.0
+      - templates
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4144,7 +4144,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the list of users
       tags:
-      - /api/2.0
+      - users
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4184,7 +4184,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Post a new user
       tags:
-      - /api/2.0
+      - users
       x-authentication-type:
       - jwt
       - anonymous
@@ -4221,7 +4221,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified user
       tags:
-      - /api/2.0
+      - users
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4255,7 +4255,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified user
       tags:
-      - /api/2.0
+      - users
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4296,7 +4296,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Patch the specified user
       tags:
-      - /api/2.0
+      - users
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4324,7 +4324,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get all views
       tags:
-      - /api/2.0
+      - views
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4357,7 +4357,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified view
       tags:
-      - /api/2.0
+      - views
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4387,7 +4387,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified view
       tags:
-      - /api/2.0
+      - views
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4413,7 +4413,7 @@ paths:
             type: object
       summary: Put the specified view
       tags:
-      - /api/2.0
+      - views
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4457,7 +4457,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get a list of workflow instances
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4500,7 +4500,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Run a workflow
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4522,7 +4522,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of workflow graphs
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4554,7 +4554,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a graph
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4588,7 +4588,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified workflow graph
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4616,7 +4616,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified workflow graph
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4639,7 +4639,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get list of workflow tasks
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4671,7 +4671,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Put a workflow task
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4704,7 +4704,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified workflow task
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4731,7 +4731,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified workflow task
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4764,7 +4764,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Delete the specified workflow
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4790,7 +4790,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Get the specified workflow
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4831,7 +4831,7 @@ paths:
             $ref: '#/definitions/Error'
       summary: Perform an action on the specified workflow
       tags:
-      - /api/2.0
+      - workflows
       x-authentication-type:
       - jwt
       x-privileges:
@@ -4864,7 +4864,7 @@ paths:
             schema:
               $ref: '#/definitions/Error'
         tags:
-        - /api/2.0
+        - notifications
       x-swagger-router-controller: notification
 produces:
 - application/json
