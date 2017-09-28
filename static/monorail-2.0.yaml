@@ -2,6 +2,13 @@ info:
   title: rackhd api
   version: "5.0.0"
 basePath: /api/2.0
+securityDefinitions:
+  JWT:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+- JWT: []
 consumes:
 - application/json
 definitions:
