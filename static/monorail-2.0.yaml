@@ -4879,6 +4879,3 @@ schemes:
 - http
 - https
 swagger: '2.0'
-tags:
-- description: RackHD 2.0 API
-  name: /api/2.0
