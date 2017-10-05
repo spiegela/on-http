@@ -134,7 +134,7 @@ definitions:
       identifier:
         type: string
       autoDiscover:
-        type: boolean
+        type: string
       bootSettings:
         type: object
       identifiers:
@@ -173,7 +173,7 @@ definitions:
     description: Post a node into RackHD
     properties:
       autoDiscover:
-        type: boolean
+        type: string
       bootSettings:
         type: object
       identifiers:

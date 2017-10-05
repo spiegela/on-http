@@ -7,7 +7,7 @@
             "properties": {
                 "autoDiscover": {
                     "description": "Enable automatic discovery",
-                    "type": "boolean"
+                    "type": "string"
                 },
                 "name": {
                     "description": "Name of the node",
