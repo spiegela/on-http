@@ -131,7 +131,7 @@ definitions:
   GetNode:
     description: Get a node from RackHD
     properties:
-      identifier:
+      id:
         type: string
       autoDiscover:
         type: string
