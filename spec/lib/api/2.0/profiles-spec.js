@@ -35,6 +35,8 @@ describe('Http.Api.Profiles', function () {
         this.sandbox.stub(workflowApiService, 'findActiveGraphForTarget').resolves({});
 
         this.sandbox.stub(taskgraphApiService, 'workflowsPost').resolves({ instanceId: 'test' });
+        this.sandbox.stub(taskgraphApiService, 'profilesGetMetadata').resolves({});
+        this.sandbox.stub(taskgraphApiService, 'profilesMetaGetByName').resolves({});
 
         this.sandbox.stub(profiles, 'getAll').resolves();
         this.sandbox.stub(profiles, 'getName').resolves();
@@ -44,6 +46,9 @@ describe('Http.Api.Profiles', function () {
         this.sandbox.stub(profileApiService, 'getNode').resolves({});
         this.sandbox.stub(profileApiService, 'createNodeAndRunDiscovery').resolves({});
         this.sandbox.stub(profileApiService, 'runDiscovery').resolves({});
+        this.sandbox.stub(profileApiService, 'setLookup').resolves();
+        this.sandbox.stub(profileApiService, 'profilesMetaGetByName').resolves();
+        this.sandbox.stub(profileApiService, 'profilesPutLibByName').resolves();
         this.sandbox.stub(profileApiService, 'getMacAddressInRequest').resolves();
 
         this.sandbox.stub(waterline.lookups, "findOneByTerm").resolves();
@@ -69,49 +74,66 @@ describe('Http.Api.Profiles', function () {
 
     describe('2.0 GET /profiles/metadata', function () {
         it('should return a list of profiles', function () {
-            profiles.getAll.resolves(profile);
-
+            var profileMetadata =
+            {
+                "id": "e33202fc-f77c-40cc-8bab-037115c1de9a",
+                "hash": "2Hmi/YDYFG9CezRfd4xVOA==",
+                "name": "renasar-ansible.pub",
+                "scope": "global"
+            };
+            taskgraphApiService.profilesGetMetadata.resolves([profileMetadata]);
             return helper.request().get('/api/2.0/profiles/metadata')
                 .expect('Content-Type', /^application\/json/)
                 .expect(200)
-                .then(function(res) {
-                    expect(res.body[0]).to.have.property('name', 'dummy_profile');
-                    expect(res.body[0]).to.have.property('scope', 'dummy');
-		            expect(res.body[0]).to.have.property('hash', '123');
-                    expect(profiles.getAll).to.have.been.calledOnce;
+                .then(function (res) {
+                    res.body.forEach(function(item) {
+                        expect(item.id).to.equal(profileMetadata.id);
+                        expect(item.name).to.equal(profileMetadata.name);
+                        expect(item.scope).to.equal(profileMetadata.scope);
+                        expect(item.hash).to.equal(profileMetadata.hash);
+                    });
                 });
         });
     });
 
-    describe('2.0 GET /profiles/metadata/:name', function () {
+   describe('2.0 GET /profiles/metadata/:name', function () {
         it('should return a single profile', function () {
-            profiles.getName.resolves(profile);
+            var profileMetadata =
+            {
+                "id": "e33202fc-f77c-40cc-8bab-037115c1de9a",
+                "hash": "2Hmi/YDYFG9CezRfd4xVOA==",
+                "name": "renasar-ansible.pub",
+                "scope": "global"
+            };
 
-            return helper.request().get('/api/2.0/profiles/metadata/dummy_profile')
+            profileApiService.profilesMetaGetByName.resolves([profileMetadata]);
+            taskgraphApiService.profilesMetaGetByName.resolves([profileMetadata]);
+
+            return helper.request().get('/api/2.0/profiles/metadata/renasar-ansible.pub')
                 .expect('Content-Type', /^application\/json/)
                 .expect(200)
                 .then(function(res) {
-                    expect(res.body[0]).to.have.property('name', 'dummy_profile');
-                    expect(profiles.getName).to.have.been.calledOnce;
-                    expect(profiles.getName).to.have.been.calledWith('dummy_profile');
+                    expect(res.body[0]).to.have.property('name', 'renasar-ansible.pub');
+                    expect(profileApiService.profilesMetaGetByName).to.have.been.calledOnce;
+                    expect(profileApiService.profilesMetaGetByName).to.have.been.calledWith('renasar-ansible.pub');
                 });
         });
 
         it('should return 404 for invalid profile name', function() {
-            profiles.getName.rejects(new Errors.NotFoundError('invalid_profile'));
+            profileApiService.profilesMetaGetByName.rejects(new Errors.NotFoundError('invalid_profile'));
 
             return helper.request().get('/api/2.0/profiles/metadata/0000')
                 .expect('Content-Type', /^application\/json/)
                 .expect(404)
                 .then(function() {
-                    expect(profiles.getName).to.have.been.calledOnce;
-                    expect(profiles.getName).to.have.been.calledWith('0000');
+                    expect(profileApiService.profilesMetaGetByName).to.have.been.calledOnce;
+                    expect(profileApiService.profilesMetaGetByName).to.have.been.calledWith('0000');
                 });
         });
     });
 
-    describe('2.0 GET /profiles/library/:name', function() {
-        it('should get profile by name', function() {
+   describe('2.0 GET /profiles/library/:name', function() {
+       it('should get profile by name', function() {
             profiles.get.resolves(profile[0]);
 
             return helper.request().get('/api/2.0/profiles/library/dummy_profile?scope=dummy')
@@ -123,7 +145,7 @@ describe('Http.Api.Profiles', function () {
                 });
         });
 
-        it('should return 404 on invalid profile name', function() {
+       it('should return 404 on invalid profile name', function() {
             profiles.get.rejects(new Errors.NotFoundError('invalid profile'));
 
             return helper.request().get('/api/2.0/profiles/library/0000?scope=dummy')
@@ -133,128 +155,38 @@ describe('Http.Api.Profiles', function () {
                     expect(profiles.get).to.have.been.calledWith('0000');
                 });
         });
-    });
+   });
 
     describe('2.0 PUT /profiles/library/:name', function () {
-        it('should PUT new mockfile', function () {
+       it('should PUT new mockfile', function () {
+           var returnedPutValue ={
+               "createdAt": "2017-09-14T18:18:38.489Z",
+               "hash": "w9F3Ve/dOcnhcJBgkGUDZg==",
+               "name": "ansible-external-inventory.js",
+               "path": "/home/rackhd/git/2rackhd/rackhd/on-taskgraph/data/profiles/ansible-external-inventory.js",
+               "scope": "global",
+               "updatedAt": "2017-09-18T13:19:10.990Z",
+               "id": "2d138ac3-0e70-4dee-ae30-b242658bd2a4"
+           };
+           profileApiService.profilesPutLibByName.resolves(returnedPutValue);
             return helper.request().put('/api/2.0/profiles/library/test.ipxe')
                 .set('Content-Type', 'application/octet-stream')
                 .send('string')
                 .expect(201)
                 .expect(function(){
-                    expect(profiles.put).to.have.been.calledOnce;
-                    expect(profiles.put).to.have.been.calledWith('test.ipxe');
+                    expect(profileApiService.profilesPutLibByName).to.have.been.calledOnce;
+                    expect(profileApiService.profilesPutLibByName).to.have.been.calledWith('test.ipxe');
                 });
         });
 
-        it('should 400 error when profiles.put() fails', function () {
-            profiles.put.rejects(new Error('dummy'));
+       it('should 400 error when profiles.put() fails', function () {
+           profileApiService.profilesPutLibByName.rejects(new Error('dummy'));
 
-            return helper.request().put('/api/2.0/profiles/library/123')
-                .send('test_profile_cmd\n')
-                .expect('Content-Type', /^application\/json/)
-                .expect(400);
-        });
-    });
-
-    describe("SB 2.0 GET /profiles", function() {
-        it("should receive both mac and ip query", function() {
-            return helper.request().get('/api/2.0/profiles?mac=00:01:02:03:04:05&&ip=1.1.1.1')
-                .expect(200)
-                .expect(function() {
-                    expect(profileApiService.getMacAddressInRequest).to.have.been.calledOnce;
-                });
-        });
-
-        it("should send 500 set mac and ip fails", function() {
-            profileApiService.getMacAddressInRequest.rejects(new Error('error'));
-
-            return helper.request().get('/api/2.0/profiles?mac=00:01:02:03:04:05&&ip=1.1.1.1')
-                .expect(500);
-        });
-
-        it("should call getNode with a compute node type", function() {
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: [ '00:01:02:03:04:05' ], ips: [ '172.31.128.5' ] })
-                .expect(200)
-                .expect(function() {
-                    expect(profileApiService.getNode).to.have.been.calledWith(
-                        [ '00:01:02:03:04:05' ],
-                        { type: 'compute' }
-                    );
-                });
-        });
-
-        it("should send down redirect.ipxe if 'macs' are not in req.query", function() {
-            profileApiService.getNode.restore();
-
-            return helper.request().get('/api/2.0/profiles')
-                .expect(200)
-                .expect(function() {
-                    expect(profiles.get).to.have.been.calledWith('redirect.ipxe');
-                });
-        });
-
-        it("should send down redirect.ipxe if a node is new", function() {
-            profileApiService.getNode.restore();
-            profileApiService.createNodeAndRunDiscovery.restore();
-
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: '00:00:de:ad:be:ef', ips: '172.31.128.5' })
-                .expect(200)
-                .expect(function() {
-                    expect(profiles.get).to.have.been.calledWith('redirect.ipxe');
-                });
-        });
-
-        it("should send a 500 if profileApiService.getNode fails", function() {
-            profileApiService.getNode.rejects(new Error('asdf'));
-
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: '00:00:de:ad:be:ef', ips: '172.31.128.5' })
-                .expect(500);
-        });
-
-        it("should send a 200 for a known node with no active graph", function() {
-            profileApiService.createNodeAndRunDiscovery.resolves({});
-            profileApiService.getNode.resolves({});
-            workflowApiService.findActiveGraphForTarget.resolves(null);
-
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: '00:00:de:ad:be:ef', ips: '172.31.128.5' })
-                .expect(200);
-        });
-
-        it("should send a 503 on failing to retrieve workflow properties", function() {
-            profileApiService.createNodeAndRunDiscovery.resolves({});
-            profileApiService.getNode.resolves({});
-            workflowApiService.findActiveGraphForTarget.resolves({});
-            taskProtocol.requestProfile.resolves('test.profile');
-            taskProtocol.requestProperties.rejects(new Error('Test workflow properties error'));
-
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: '00:00:de:ad:be:ef', ips: '172.31.128.5' })
-                .expect(503)
-                .then(function(resp) {
-                    expect(resp.body.message).to.equal(
-                        'Error: Unable to retrieve workflow properties or profiles');
-                });
-        });
-
-        it("should send down a task specific bootfile for a node with an active task", function() {
-            profileApiService.createNodeAndRunDiscovery.resolves({});
-            profileApiService.getNode.resolves({});
-            workflowApiService.findActiveGraphForTarget.resolves({});
-            taskProtocol.requestProfile.resolves('test.profile');
-            taskProtocol.requestProperties.resolves({});
-
-            return helper.request().get('/api/2.0/profiles')
-                .query({ macs: '00:00:de:ad:be:ef', ips: '172.31.128.5' })
-                .expect(200)
-                .expect(function() {
-                    expect(profiles.get).to.have.been.calledWith('test.profile');
-                });
-        });
+               return helper.request().put('/api/2.0/profiles/library/123')
+               .send('test_profile_cmd\n')
+               .expect('Content-Type', /^application\/json/)
+               .expect(400);
+       });
     });
 
     describe("2.0 GET /profiles/switch/:vendor", function() {
@@ -374,5 +306,59 @@ describe('Http.Api.Profiles', function () {
                     expect(profileApiService.getNode).to.have.not.been.called;
                 });
         });
+
+        describe('GET /profiles/library/:name', function () {
+            it('should return a single profiles', function () {
+                var profileLib = {contents: "SWI=flash:/<%=bootfile%>"};
+                profiles.get.resolves(profileLib);
+                return helper.request().get('/api/2.0/profiles/library/test')
+                    .expect(200, profileLib.contents)
+                    .then(function() {
+                        expect(profiles.get).to.have.been.calledWith('test');
+                    });
+            });
+
+            it('should return 404 for invalid profiles name', function() {
+                profiles.get.rejects();
+                return helper.request().get('/api/2.0/profiles/library/test')
+                    .then(function() {
+                        expect(profiles.get).to.have.been.calledOnce;
+                        expect(profiles.get).to.have.been.calledWith('test');
+                    });
+            });
+
+        });
+
+        describe('2.0 PUT /templates/library/:name', function () {
+            it('should PUT new mockfile', function () {
+                var returnedPutValue ={
+                    "createdAt": "2017-09-14T18:18:38.489Z",
+                    "hash": "w9F3Ve/dOcnhcJBgkGUDZg==",
+                    "name": "ansible-external-inventory.js",
+                    "path": "/home/rackhd/git/2rackhd/rackhd/on-taskgraph/data/profiles/ansible-external-inventory.js",
+                    "scope": "global",
+                    "updatedAt": "2017-09-18T13:19:10.990Z",
+                    "id": "2d138ac3-0e70-4dee-ae30-b242658bd2a4"
+                };
+                profileApiService.profilesPutLibByName.resolves(returnedPutValue);
+                return helper.request().put('/api/2.0/profiles/library/testTemplate')
+                    .send('test\n')
+                    .expect(201)
+                    .expect(function(){
+                        expect(profileApiService.profilesPutLibByName).to.have.been.calledOnce;
+                        expect(profileApiService.profilesPutLibByName).to.have.been.calledWith('testTemplate');
+                    });
+            });
+
+            it('should 400 error when profiles.put() fails', function () {
+                profileApiService.profilesPutLibByName.rejects(new Error('dummy'));
+                return helper.request().put('/api/2.0/profiles/library/123')
+                    .send('test_template_foo\n')
+                    .expect('Content-Type', /^application\/json/)
+                    .expect(400);
+            });
+        });
+
+
     });
 });

@@ -3776,6 +3776,7 @@ paths:
         type: string
       responses:
         200:
+
           description: Successfully retrieved bootstrap.js
           schema:
             $ref: '#/definitions/VersionsResponse'
