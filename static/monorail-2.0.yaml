@@ -49,6 +49,13 @@ definitions:
         type: string
     required:
     - message
+  NodePatchTags:
+    description: Request body for patching node tags
+    properties:
+      tags:
+        items:
+          type: string
+        type: array
   action:
     description: Action object
     properties:
@@ -1963,7 +1970,7 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/post_tags'
+          $ref: '#/definitions/NodePatchTags'
       responses:
         200:
           description: Successfully modified node tag(s).
